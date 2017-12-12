@@ -178,6 +178,7 @@ fn build() -> io::Result<()> {
     enable!(configure, "BUILD_LIB_FREETYPE", "libfreetype");
     enable!(configure, "BUILD_LIB_FRIBIDI", "libfribidi");
     enable!(configure, "BUILD_LIB_OPENCV", "libopencv");
+    enable!(configure, "BUILD_LIB_RUBBERBAND", "librubberband");
 
     // configure external encoders/decoders
     enable!(configure, "BUILD_LIB_AACPLUS", "libaacplus");
