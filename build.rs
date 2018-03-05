@@ -75,6 +75,10 @@ fn search() -> PathBuf {
 }
 
 fn fetch() -> io::Result<()> {
+    if source().is_dir() {
+        return Ok(());
+    }
+
     let status = try!(
         Command::new("git")
             .current_dir(&output())
