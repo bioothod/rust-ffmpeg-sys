@@ -106,6 +106,13 @@ fn build() -> io::Result<()> {
         configure.arg(format!("--cross-prefix={}-", env::var("TARGET").unwrap()));
     }
 
+    if env::var("CARGO_EXTRA_CFLAGS").is_ok() {
+        configure.arg(format!("--extra-cflags={}", env::var("CARGO_EXTRA_CFLAGS").unwrap()));
+    }
+    if env::var("CARGO_EXTRA_LDFLAGS").is_ok() {
+        configure.arg(format!("--extra-ldflags={}", env::var("CARGO_EXTRA_LDFLAGS").unwrap()));
+    }
+
     // control debug build
     if env::var("DEBUG").is_ok() {
         configure.arg("--enable-debug");
@@ -225,6 +232,10 @@ fn build() -> io::Result<()> {
 
     // other external libraries
     enable!(configure, "BUILD_NVENC", "nvenc");
+
+    enable!(configure, "BUILD_CUDA", "cuda");
+    enable!(configure, "BUILD_CUVID", "cuvid");
+    enable!(configure, "BUILD_LIB_NPP", "libnpp");
 
     // configure external protocols
     enable!(configure, "BUILD_LIB_SMBCLIENT", "libsmbclient");

@@ -33,6 +33,9 @@ build-license-nonfree  = ["build"]
 build-license-version3 = ["build"]
 
 # misc
+build-cuda = ["build"]
+build-cuvid = ["build"]
+build-lib-npp = ["build"]
 build-nvenc = ["build"]
 build-pic   = ["build"]
 build-zlib  = ["build"]
